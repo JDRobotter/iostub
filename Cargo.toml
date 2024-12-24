@@ -1,10 +1,10 @@
 [package]
 name = "iostub"
 authors = ["JD Brossillon <jdam.github@gmail.com>"]
-description = "A ready to use std::io::{Read,Write} stub to write test suites"
+description = "A ready to use std::io::Read stub to write test suites"
 repository = "https://github.com/JDRobotter/iostub"
 readme = "README.md"
-keywords = ["io", "std", "stub", "reader", "writer"]
+keywords = ["io", "std", "stub", "reader", "error"]
 license-file = "LICENSE"
 version = "0.1.0"
 edition = "2021"

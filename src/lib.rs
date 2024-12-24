@@ -118,6 +118,27 @@ mod tests {
     }
 
     #[test]
+    fn read_all_interleaved() {
+        let mut stub = IOStub::new();
+        let mut cr = ConsumeReader::new(stub.clone());
+        stub.push_read(b"otters");
+        stub.push_read(b"are");
+        stub.push_read(b"amazing");
+        let rv = cr.read_all();
+        assert!(rv.is_ok());
+        assert_eq!(rv.unwrap(), Vec::from(b"ottersareamazing"));
+        let rv = cr.read_all();
+        assert!(rv.is_ok());
+        assert_eq!(rv.unwrap(), Vec::from(b""));
+        stub.push_read(b"from");
+        stub.push_read(b"otter");
+        stub.push_read(b"space");
+        let rv = cr.read_all();
+        assert!(rv.is_ok());
+        assert_eq!(rv.unwrap(), Vec::from(b"fromotterspace"));
+    }
+
+    #[test]
     fn read_error() {
         let mut stub = IOStub::new();
         let mut cr = ConsumeReader::new(stub.clone());
