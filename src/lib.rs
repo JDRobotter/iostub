@@ -3,7 +3,7 @@ use std::collections::VecDeque;
 use std::io::{Read, Result};
 use std::rc::Rc;
 
-struct IOStub {
+pub struct IOStub {
     reads: Rc<RefCell<VecDeque<Result<Vec<u8>>>>>,
 }
 
